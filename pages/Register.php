@@ -18,7 +18,11 @@
             <br>
             <input type="password" name="confirm_password" placeholder="Confirm Password" required>
             <br>
+            <label>Phone Number :</label>
+            <input type="tel" id ="phone" name="phone" placeholder="+62" pattern="+62[0-9]{11}" required>
+            <br>
             <input type="submit" value="Register">
+
             <div>
             already have an account ? <a id="italic" href="./login.php">login now!</a>
             </div>

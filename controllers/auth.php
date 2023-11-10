@@ -35,14 +35,10 @@
 
            $_SESSION['is_login'] = true;
            $_SESSION['username'] = $data["username"];
-           $_SESSION["role"] = $data["role"];
-           $_SESSION["fullname"] = $data["fullname"];
+           $_SESSION["phone"] = $data["role"];
            $_SESSION["email"] = $data["email"];
 
-
-
-           header("Location: ../messages.php");
-
+           header("Location: ../home.php");
         }
 
         else {

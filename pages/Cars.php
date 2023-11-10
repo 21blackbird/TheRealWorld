@@ -23,6 +23,5 @@
         <a href="./login.php">logout</a>
     </div>
 
-
 </body>
 </html>
