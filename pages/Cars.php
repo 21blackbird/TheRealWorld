@@ -17,11 +17,11 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="./Home.php">Home</a>
-        <a href="./Cars.php">Car List</a>
+        <a href="./home.php">Home</a>
+        <a href="./cars.php">Car List</a>
+        <a href="./profile.php">Profile</a>
+        <a href="./login.php">logout</a>
     </div>
-
-    <h1 id="top">Your Cars !</h1>
 
 
 </body>

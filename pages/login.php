@@ -19,7 +19,7 @@
         <br>
         <br>
         <div class="goregis">
-        don't have an account ? <a id="italic" href="./Register.php">register now!</a>
+        don't have an account ? <a id="italic" href="./register.php">register now!</a>
         </div>
     </form>
 
