@@ -1,9 +1,9 @@
 <?php
-    session_start();
+   session_start();
 
-    if ($_SESSION['is_login'] !== true) {
-      header("Location: login.php");  
-    }
+   if ($_SESSION['is_login'] !== true) {
+     header("Location: login.php");  
+   }
     
 ?>
 

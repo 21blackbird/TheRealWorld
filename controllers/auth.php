@@ -30,21 +30,18 @@
 
         if ($login_result->num_rows == 1) {
             $data = $login_result->fetch_assoc();
-
-           $_SESSION["success_message"] = "Welcome, $username";
-
            $_SESSION['is_login'] = true;
            $_SESSION['username'] = $data["username"];
            $_SESSION["phone"] = $data["role"];
            $_SESSION["email"] = $data["email"];
+           $_SESSION["phone"] = $data["phone"];
 
-           header("Location: ../home.php");
+           header("Location: ../pages/home.php");
         }
 
         else {
             $_SESSION["error_message"] = "Login Failed.";
-
-            header("Location: ../login.php?error=1");
+            header("Location: ../pages/login.php");
         }
 
     }
