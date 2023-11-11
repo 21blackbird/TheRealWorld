@@ -34,6 +34,7 @@
            $_SESSION['username'] = $data["username"];
            $_SESSION["email"] = $data["email"];
            $_SESSION["phone"] = $data["phone"];
+           $_SESSION["phone"] = $data["phone"];
 
            header("Location: ../pages/home.php");
         }

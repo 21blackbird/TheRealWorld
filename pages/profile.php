@@ -23,11 +23,11 @@
     </div>
 
 <div class="section">
-    Username: <?php echo $_SESSION['username'] ?>;
+    Username: <?php echo $_SESSION['username'] ?>
     <br>
-    Email : <?php echo $_SESSION['email'] ?>;
+    Email : <?php echo $_SESSION['email'] ?>
     <br>
-    Phone Number : <?php echo $_SESSION['phone'] ?>;
+    Phone Number : <?php echo $_SESSION['phone'] ?>
     <br>
 </div>
 
