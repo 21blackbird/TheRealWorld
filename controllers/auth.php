@@ -17,15 +17,6 @@
         header("Location: ../pages/login.php");
     }
 
-    global $conn;
-
-    $query = "SELECT * FROM users WHERE username=? AND password=?;";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ss",$username,$password);
-    $stmt->execute();
-    $stmt->get_result();
-
-
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         $username = $_POST['username'];
@@ -37,7 +28,7 @@
         }
 
         $data = $login_result->fetch_assoc();
-        $isVerified = password_verify($password, $login_result->fetch_column(3));
+        $isVerified = password_verify($password, $data['password']);
 
         if(!$isVerified){
             errorMessage();
