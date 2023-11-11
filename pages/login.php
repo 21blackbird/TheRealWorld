@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../style/login.css">
 </head>
 <body>
-    <form>
+    <form action="../controllers/auth.php" method="POST">
         <h2>Welcome to The Real World</h2>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" placeholder="Username" required>
