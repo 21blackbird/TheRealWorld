@@ -25,6 +25,22 @@
 
 <h1 id="top">Here's your Car List !</h1>
 
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+</thead>
+    <tbody>
+        <tr>
+            <td>Bugatti</td>
+        </tr>
+        <tr>
+            <td>Mustang</td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
 
 <div class="footer">
     &copy; 2023 Your Website. All rights reserved.
