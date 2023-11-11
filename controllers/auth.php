@@ -2,14 +2,19 @@
     session_start();
     require "./connection.php";
 
-    function doLogin($username, $password) {
-    global $conn;
-    $query = "SELECT * FROM users WHERE username=? AND password=?;";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ss",$username,$password);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result;
+    function doLogin($username) {
+        global $conn;
+        $query = "SELECT * FROM users WHERE username=?;";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s",$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
+    }
+
+    function errorMessage(){
+        $_SESSION["error_message"] = "Login Failed";
+        header("Location: ../pages/login.php");
     }
 
     global $conn;
@@ -26,22 +31,23 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $login_result = doLogin($username, $password);
-
-        if ($login_result->num_rows == 1) {
-            $data = $login_result->fetch_assoc();
-           $_SESSION['is_login'] = true;
-           $_SESSION['username'] = $data["username"];
-           $_SESSION["email"] = $data["email"];
-           $_SESSION["phone"] = $data["phone"];
-
-           header("Location: ../pages/home.php");
+        $login_result = doLogin($username);
+        if($login_result->num_rows < 1 || $login_result->num_rows > 1){
+            errorMessage();
         }
 
-        else {
-            $_SESSION["error_message"] = "Login Failed.";
-            header("Location: ../pages/login.php");
+        $data = $login_result->fetch_assoc();
+        $isVerified = password_verify($password, $login_result->fetch_column(3));
+
+        if(!$isVerified){
+            errorMessage();
         }
 
+        $_SESSION['is_login'] = true;
+        $_SESSION['username'] = $data["username"];
+        $_SESSION["email"] = $data["email"];
+        $_SESSION["phone"] = $data["phone"];
+
+        header("Location: ../pages/home.php");
     }
 ?>
