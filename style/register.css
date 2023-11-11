@@ -14,7 +14,8 @@ body {
 
 .registration-container input[type="text"],
 .registration-container input[type="email"],
-.registration-container input[type="password"]{
+.registration-container input[type="password"],
+.registration-container input[type="tel"]{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;

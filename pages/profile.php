@@ -23,7 +23,16 @@
         <a href="./login.php">logout</a>
     </div>
 
-    <div class="footer">
+<div class="section">
+    Fullname : <?php echo $_SESSION['fullname'] ?>;
+    <br>
+    Email : <?php echo $_SESSION['email'] ?>;
+    <br>
+    Phone Number : <?php echo $_SESSION['phone'] ?>;
+    <br>
+</div>
+
+<div class="footer">
      &copy; 2023 Your Website. All rights reserved.
 </div>
 
