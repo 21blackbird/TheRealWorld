@@ -1,9 +1,9 @@
 <?php
-   session_start();
+//    session_start();
 
-   if ($_SESSION['is_login'] !== true) {
-     header("Location: login.php");  
-    }
+//    if ($_SESSION['is_login'] !== true) {
+//      header("Location: login.php");  
+//     }
 
 ?>
 
@@ -23,8 +23,9 @@
         <a href="./login.php">logout</a>
     </div>
 
-    <h1 id="top">Welcome to the Real World !</h1>
-
+    <div class="footer">
+     &copy; 2023 Your Website. All rights reserved.
+</div>
 
 </body>
 </html>
