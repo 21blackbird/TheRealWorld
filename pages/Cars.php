@@ -25,8 +25,10 @@
 
 <h1 id="top">Here's your Car List !</h1>
 
-<input type="text" id="carInput" placeholder="Enter Your Car Name G!">
-<button id="addButton" onclick="addCar()">Add Car</button>
+<form action="../controllers/carcontroller.php" method="POST">
+    <input type="text" id="carInput" name="car" placeholder="Enter Your Car Name G!">
+    <button id="addButton" onclick="addCar()" name="add">Add Car</button>
+</form>
 
 <table>
     <thead>
