@@ -32,7 +32,6 @@
             $data = $login_result->fetch_assoc();
            $_SESSION['is_login'] = true;
            $_SESSION['username'] = $data["username"];
-           $_SESSION["phone"] = $data["role"];
            $_SESSION["email"] = $data["email"];
            $_SESSION["phone"] = $data["phone"];
 
