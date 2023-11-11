@@ -24,7 +24,7 @@
     </div>
 
 <div class="section">
-    Fullname : <?php echo $_SESSION['fullname'] ?>;
+    Username: <?php echo $_SESSION['username'] ?>;
     <br>
     Email : <?php echo $_SESSION['email'] ?>;
     <br>
