@@ -5,11 +5,12 @@
 
     function addCar($car) {
         global $conn;
-        $username = $_SESSION['username'];
-        $getid = "SELECT id FROM users WHERE username='$username';";
-        $userid = $conn->query($getid)->fetch_assoc()['id'];
-        $query = "INSERT INTO cars (user_id, name) VALUES ($userid, '$car');";
-        $result = $conn->query($query);
+        $userid = $_SESSION['id'];
+        $query = "INSERT INTO cars (user_id, name) VALUES (?, ?);";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("is", $userid, $car);
+        $stmt->execute();
+        $result = $stmt->get_result();
         return $result;
     }
 

@@ -1,9 +1,15 @@
 <?php
    session_start();
+   require "../controllers/connection.php";
 
    if ($_SESSION['is_login'] !== true) {
      header("Location: login.php");  
    }
+
+   global $conn;
+   $user_id = $_SESSION['id'];
+   $query = "SELECT * FROM cars WHERE user_id = $user_id";
+   $result = $conn->query($query);
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +33,7 @@
 
 <form action="../controllers/carcontroller.php" method="POST">
     <input type="text" id="carInput" name="car" placeholder="Enter Your Car Name G!">
-    <button id="addButton" onclick="addCar()" name="add">Add Car</button>
+    <button type="submit" id="addButton" onclick="addCar()" name="add">Add Car</button>
 </form>
 
 <table>
@@ -38,6 +44,11 @@
 </thead>
     <tbody id="car-Table-Body">
     <?php
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                echo '<tr><td>' . $row['name'] . '</td></tr>';
+            }
+        }
         if (isset($_SESSION['car']) && is_array($_SESSION['car'])) {
             foreach ($_SESSION['car'] as $carName) {
                 echo '<tr><td>' . $carName . '</td></tr>';

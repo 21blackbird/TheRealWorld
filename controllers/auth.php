@@ -35,6 +35,7 @@
         }
 
         $_SESSION['is_login'] = true;
+        $_SESSION['id'] = $data['id'];
         $_SESSION['username'] = $data["username"];
         $_SESSION["email"] = $data["email"];
         $_SESSION["phone"] = $data["phone"];

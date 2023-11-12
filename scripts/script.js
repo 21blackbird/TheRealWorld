@@ -5,7 +5,6 @@ function addCar() {
         var newRow = table.insertRow(table.rows.length);
         var cell = newRow.insertCell(0);
         cell.textContent = carName;
-        document.getElementById('carInput').value = '';
     } else {
         alert('Please enter a car name !');
     }
