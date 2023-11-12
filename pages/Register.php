@@ -9,7 +9,7 @@
 <body>
     <div class="registration-container">
         <h2>Registration</h2>
-        <form class="registration-form">
+        <form class="registration-form" action="../controllers/register.php" method="POST">
             <input type="text" name="username" placeholder="Username" required>
             <br>
             <input type="email" name="email" placeholder="Email" required>
