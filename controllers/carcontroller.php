@@ -13,6 +13,15 @@
         $result = $stmt->get_result();
         return $result;
     }
+    
+    function deleteCar($carId) {
+        global $conn;
+        $query = "DELETE FROM cars WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $carId);
+        $stmt->execute();
+        $stmt->close();
+    }
 
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
         //add car into table
@@ -25,7 +34,11 @@
 
         //delete car from table
         else if (isset($_POST['delete'])) {
-
+            if (isset($_POST['car_id'])) {
+                $carId = $_POST['car_id'];
+                deleteCar($carId);
+                header("Location: ../pages/cars.php");
+            }
         }
     }
 

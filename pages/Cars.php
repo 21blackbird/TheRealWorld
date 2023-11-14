@@ -44,16 +44,21 @@
 </thead>
     <tbody id="car-Table-Body">
     <?php
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                echo '<tr><td>' . $row['name'] . '</td></tr>';
-            }
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<tr>';
+            echo '<td>';
+            echo $row['name'];
+
+            echo '<form action="../controllers/carcontroller.php" method="POST" style="float: right;">';
+            echo '<input type="hidden" name="car_id" value="' . $row['id'] . '">';
+            echo '<button type="submit" name="delete">Delete</button>';
+            echo '</form>';
+
+            echo '</td>';
+            echo '</tr>';
         }
-        if (isset($_SESSION['car']) && is_array($_SESSION['car'])) {
-            foreach ($_SESSION['car'] as $carName) {
-                echo '<tr><td>' . $carName . '</td></tr>';
-            }
-        }
+    }
     ?>
     </tbody>
 </table>
