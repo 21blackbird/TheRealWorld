@@ -10,8 +10,7 @@
         $stmt = $conn->prepare($query);
         $stmt->bind_param("is", $userid, $car);
         $stmt->execute();
-        $result = $stmt->get_result();
-        return $result;
+        $stmt->close();
     }
     
     function deleteCar($carId) {
@@ -28,18 +27,16 @@
         if (isset($_POST['add'])) {
             $car = $_POST['car'];
             addCar($car);
-            $_SESSION['car'][] = $car;
-            header("Location: ../pages/cars.php");
+        }
+        
+        //delete car from table
+        if(isset($_POST['delete'])) {
+            $carId = $_POST['car_id'];
+            deleteCar($carId);
         }
 
-        //delete car from table
-        else if (isset($_POST['delete'])) {
-            if (isset($_POST['car_id'])) {
-                $carId = $_POST['car_id'];
-                deleteCar($carId);
-                header("Location: ../pages/cars.php");
-            }
-        }
+        header("Location: ../pages/cars.php");
+        die();
     }
 
 ?>

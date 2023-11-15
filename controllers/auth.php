@@ -15,6 +15,7 @@
     function errorMessage(){
         $_SESSION["error_message"] = "Login Failed";
         header("Location: ../pages/login.php");
+        die();
     }
 
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
