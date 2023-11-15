@@ -20,7 +20,7 @@
         <a href="./home.php">Home</a>
         <a href="./cars.php">Car List</a>
         <a href="./profile.php">Profile</a>
-        <a href="./login.php">logout</a>
+        <a href="../controllers/logout.php">Logout</a>
 </div>
 
 <h1 id="top">Welcome to The Real World</h1>
