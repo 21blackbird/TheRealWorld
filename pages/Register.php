@@ -18,7 +18,7 @@
             <br>
             <input type="password" name="confirm_password" placeholder="Confirm Password" required>
             <br>
-            <input type="tel" id ="phone" name="phone" placeholder="+62" pattern="+62[0-9]{11}" required>
+            <input type="tel" id ="phone" name="phone" placeholder="+62" pattern="^+62[0-9]{11}$" required>
             <br>
             <input type="submit" value="Register">
             <div>
