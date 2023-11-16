@@ -9,7 +9,7 @@
 <body>
     <div class="registration-container">
         <h2>Registration</h2>
-        <form class="registration-form">
+        <form class="registration-form" action="../controllers/register.php" method="POST">
             <input type="text" name="username" placeholder="Username" required>
             <br>
             <input type="email" name="email" placeholder="Email" required>
@@ -18,7 +18,7 @@
             <br>
             <input type="password" name="confirm_password" placeholder="Confirm Password" required>
             <br>
-            <input type="tel" id ="phone" name="phone" placeholder="+62" pattern="+62[0-9]{11}" required>
+            <input type="tel" id ="phone" name="phone" placeholder="+62" pattern="^+62[0-9]{11}$" required>
             <br>
             <input type="submit" value="Register">
             <div>

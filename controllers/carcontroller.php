@@ -5,12 +5,21 @@
 
     function addCar($car) {
         global $conn;
-        $username = $_SESSION['username'];
-        $getid = "SELECT id FROM users WHERE username='$username';";
-        $userid = $conn->query($getid)->fetch_assoc()['id'];
-        $query = "INSERT INTO cars (user_id, name) VALUES ($userid, '$car');";
-        $result = $conn->query($query);
-        return $result;
+        $userid = $_SESSION['id'];
+        $query = "INSERT INTO cars (user_id, name) VALUES (?, ?);";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("is", $userid, $car);
+        $stmt->execute();
+        $stmt->close();
+    }
+    
+    function deleteCar($carId) {
+        global $conn;
+        $query = "DELETE FROM cars WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $carId);
+        $stmt->execute();
+        $stmt->close();
     }
 
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -18,14 +27,16 @@
         if (isset($_POST['add'])) {
             $car = $_POST['car'];
             addCar($car);
-            $_SESSION['car'][] = $car;
-            header("Location: ../pages/cars.php");
         }
-
+        
         //delete car from table
-        else if (isset($_POST['delete'])) {
-
+        if(isset($_POST['delete'])) {
+            $carId = $_POST['car_id'];
+            deleteCar($carId);
         }
+
+        header("Location: ../pages/cars.php");
+        die();
     }
 
 ?>
