@@ -78,3 +78,8 @@ tr {
     padding: 8px;
     cursor: pointer;
 }
+
+.table-container{
+    max-height: 550px;
+    overflow:scroll;
+}

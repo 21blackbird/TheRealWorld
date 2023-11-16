@@ -36,8 +36,9 @@
     <button type="submit" id="addButton" onclick="addCar()" name="add">Add Car</button>
 </form>
 
+<div class="table-container">
 <table>
-    <thead>
+<thead>
         <tr>
             <th>Car Name</th>
         </tr>
@@ -62,7 +63,7 @@
     ?>
     </tbody>
 </table>
-
+</div>
 
 <div class="footer">
     &copy; 2023 Your Website. All rights reserved.
