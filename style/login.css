@@ -18,6 +18,11 @@ form {
     width: 300px;
 }
 
+form > p{
+    text-align: center;
+    color: red;
+}
+
 label {
     display: block;
     margin-bottom: 8px;

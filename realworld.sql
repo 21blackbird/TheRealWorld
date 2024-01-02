@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2023 at 04:49 PM
+-- Generation Time: Jan 02, 2024 at 05:09 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -39,7 +39,6 @@ CREATE TABLE `cars` (
 
 INSERT INTO `cars` (`id`, `user_id`, `name`) VALUES
 (1, 3, 'Subaru R-Class'),
-(2, 1, 'Maybach Electra'),
 (3, 2, 'Subaru S4'),
 (4, 4, 'Acura Galant'),
 (5, 2, 'Lincoln Grand Vitara'),
@@ -54,8 +53,6 @@ INSERT INTO `cars` (`id`, `user_id`, `name`) VALUES
 (14, 3, 'Bentley Caravan'),
 (15, 1, 'Volkswagen Impala'),
 (16, 3, 'BMW Park Avenue'),
-(17, 1, 'Cadillac Ram 1500'),
-(18, 1, 'Chevrolet 745'),
 (19, 2, 'Mazda NX'),
 (20, 3, 'Chevrolet F-Series Super Duty');
 
@@ -70,18 +67,20 @@ CREATE TABLE `users` (
   `username` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` char(60) NOT NULL,
-  `phone` char(13) NOT NULL
+  `phone` char(13) NOT NULL,
+  `failed_login_attempt` int(11) NOT NULL DEFAULT 0,
+  `failed_login_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `phone`) VALUES
-(1, 'egeleman0', 'mdadson0@economist.com', '$2y$10$grpUABXNDInBS3Ojy31nfOIi/I6SPDavomSJQOwxQckspUjOjzoYW', '3088360882'),
-(2, 'tshannon1', 'rfloyed1@nationalgeographic.com', '$2y$10$lIgMbio/9Ng7pW/8zWzOFu2PiCBRFV262aRqfSqj3JidHa.1wcS3y', '6997434804'),
-(3, 'jgilardone2', 'laspden2@squidoo.com', '$2y$10$jDmQk.qFdaScvnRWcSiHV.nmqOBRE.S7HhZ2YzYlYMOEHIIhmWNbO', '2091588704'),
-(4, 'myersin3', 'nstealy3@dion.ne.jp', '$2y$10$ijc6XbgN6wQfAhe.RPGn0O6/Yep0ZtzFQK/4wwvqHHvl2523fmVf6', '9622157186');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `phone`, `failed_login_attempt`, `failed_login_time`) VALUES
+(1, 'egeleman0', 'mdadson0@economist.com', '$2y$10$grpUABXNDInBS3Ojy31nfOIi/I6SPDavomSJQOwxQckspUjOjzoYW', '3088360882', 0, NULL),
+(2, 'tshannon1', 'rfloyed1@nationalgeographic.com', '$2y$10$lIgMbio/9Ng7pW/8zWzOFu2PiCBRFV262aRqfSqj3JidHa.1wcS3y', '6997434804', 0, NULL),
+(3, 'jgilardone2', 'laspden2@squidoo.com', '$2y$10$jDmQk.qFdaScvnRWcSiHV.nmqOBRE.S7HhZ2YzYlYMOEHIIhmWNbO', '2091588704', 0, NULL),
+(4, 'myersin3', 'nstealy3@dion.ne.jp', '$2y$10$ijc6XbgN6wQfAhe.RPGn0O6/Yep0ZtzFQK/4wwvqHHvl2523fmVf6', '9622157186', 0, NULL);
 
 --
 -- Indexes for dumped tables
@@ -109,13 +108,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables

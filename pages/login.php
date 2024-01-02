@@ -1,3 +1,10 @@
+<?php
+   session_start();
+
+   if (isset($_SESSION['is_login'])) {
+    header("Location: Home.php");
+   }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +16,12 @@
 <body>
     <form action="../controllers/auth.php" method="POST">
         <h2>Welcome to The Real World</h2>
+        <?php 
+            if(isset($_SESSION['error_message'])){
+                $error = $_SESSION['error_message'];
+                echo "<p>$error</p>";
+            }
+        ?>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" placeholder="Username" required>
         <label for="password">Password:</label>

@@ -25,13 +25,13 @@
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
         //add car into table
         if (isset($_POST['add'])) {
-            $car = $_POST['car'];
+            $car = htmlspecialchars($_POST['car'], ENT_QUOTES, 'UTF-8');
             addCar($car);
         }
         
         //delete car from table
         if(isset($_POST['delete'])) {
-            $carId = $_POST['car_id'];
+            $carId = htmlspecialchars($_POST['car_id'], ENT_QUOTES, 'UTF_8');
             deleteCar($carId);
         }
 
