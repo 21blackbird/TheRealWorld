@@ -31,7 +31,7 @@
         
         //delete car from table
         if(isset($_POST['delete'])) {
-            $carId = htmlspecialchars($_POST['car_id'], ENT_QUOTES, 'UTF_8');
+            $carId = $_POST['car_id'];
             deleteCar($carId);
         }
 
