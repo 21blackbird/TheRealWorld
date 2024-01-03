@@ -24,11 +24,10 @@
         }
 
         function validateCSRFToken() {
-            if (!isset($_SESSION['token']) || time() > $_SESSION['expiration'] || $_POST['token'] !== $_SESSION['token']) {
-                unset($_SESSION['token']);
-                unset($_SESSION['expiration']);
+            if (!isset($_SESSION['token']) || $_POST['token'] !== $_SESSION['token']) {
                 errorMessage('Invalid CSRF token');
             }
+            unset($_SESSION['token']);
         }
 
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
