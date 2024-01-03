@@ -60,7 +60,7 @@
             }
             unset($_SESSION['token']);
         }
-        
+
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
             validateCSRFToken();
             $current_Time = time();
@@ -85,10 +85,7 @@
                 logFailedLogin($id, $current_Time);
                 errorMessage('Your username/password is wrong');
             }
-            // Token for successful login
-            $_SESSION['token'] =  bin2hex(random_bytes(32));
-            $_SESSION['expiration'] = time() + 36000;
-
+            
             if($attempts != 0){
                 resetLoginAttempt($id);
             }

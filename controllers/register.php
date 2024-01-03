@@ -8,13 +8,6 @@
         die();
     }
 
-    function validateCSRFToken() {
-        if (!isset($_SESSION['token']) || $_POST['token'] !== $_SESSION['token']) {
-            errorMessage('Invalid CSRF token');
-        }
-        unset($_SESSION['token']);
-    }
-    
     function userAvail($username) {
         global $conn;
         $query = "SELECT * FROM users WHERE username = ?;";
@@ -103,7 +96,12 @@
         return true;
     }
 
-    $_SESSION['token'] = bin2hex(random_bytes(32));
+    function validateCSRFToken() {
+        if (!isset($_SESSION['token']) || $_POST['token'] !== $_SESSION['token']) {
+            errorMessage('Invalid CSRF token');
+        }
+        unset($_SESSION['token']);
+    }
 
     if($_SERVER['REQUEST_METHOD'] === "POST"){
         validateCSRFToken();

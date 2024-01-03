@@ -10,6 +10,8 @@
    $user_id = $_SESSION['id'];
    $query = "SELECT * FROM cars WHERE user_id = $user_id";
    $result = $conn->query($query);
+
+   $_SESSION['token'] =  bin2hex(random_bytes(32));
 ?>
 
 <!DOCTYPE html>
