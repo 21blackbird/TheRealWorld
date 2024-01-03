@@ -32,6 +32,7 @@
 <h1 id="top">Here's your Car List !</h1>
 
 <form action="../controllers/carcontroller.php" method="POST">
+    <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
     <input type="text" id="carInput" name="car" placeholder="Enter Your Car Name G!">
     <button type="submit" id="addButton" onclick="addCar()" name="add">Add Car</button>
 </form>

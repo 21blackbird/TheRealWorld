@@ -4,6 +4,8 @@
    if (isset($_SESSION['is_login'])) {
     header("Location: Home.php");
    }
+
+   $_SESSION['token'] =  bin2hex(random_bytes(32));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +17,7 @@
 </head>
 <body>
     <form action="../controllers/auth.php" method="POST">
+        <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
         <h2>Welcome to The Real World</h2>
         <?php 
             if(isset($_SESSION['error_message'])){
